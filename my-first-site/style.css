@@ -1,0 +1,1112 @@
+/* 1. Target the whole page */
+body {
+    background-color: #000000; /* A deep charcoal black */
+    color: #ffffff;            /* Soft white text (easier on the eyes) */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;          /* Adds breathing room between lines */
+    margin: 40px;              /* Pulls content away from the edges */
+}
+
+/* 2. Style the headings */
+h1 {
+    text-align: center;
+    color: #ff0000;           /* A vibrant cyan blue */
+    font-size: 3rem;
+    -webkit-text-stroke: 1px #000000; /* Adds a 2px cyan outline */
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #ffffff;           /* A bright pink for subheaders */
+    margin-top: 30px;
+}
+h3 {
+    text-align: center;
+    margin-top: 5px; /* Adds a little space between the image and the text */
+    margin-bottom: 2px; /* Adds a little space between the image and the text */
+    color: #ffffff;
+    font-size: 3rem;
+}
+
+/* 3. Style your links */
+a {
+    color: #00d4ff;
+    text-decoration: none;     /* Removes the default underline */
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline; /* Shows underline only when you hover */
+    color: #ffffff;
+
+
+}
+
+/* The Background Overlay */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dims the rest of the site */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border: 1px solid #00d4ff;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    /* This adds a "pop" animation */
+    animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+    from { 
+        transform: scale(0.8); 
+        opacity: 0; 
+    }
+    to { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-btn:hover { color: white; }
+
+.project-img {
+    width: 100%;           /* Makes image match the card width */
+    height: 200px;         /* Gives all project images a consistent height */
+    object-fit: cover;     /* The Secret Sauce: Crops the image to fit without squishing it */
+    border-radius: 8px;    /* Matches the rounded corners of your card */
+    margin-bottom: 15px;   /* Space between image and text */
+    display: block;
+}
+
+/* Video Work Section */
+/* BlackTape */
+/* --- SECTION STYLING --- */
+.portfolio-section {
+    width: 100%;
+    min-height: 100vh;
+    background: #080808;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 0;
+    overflow: hidden;
+
+    /* 1. Add a subtle grid pattern */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    
+    overflow: hidden; /* Keeps the glow from leaking out */
+}
+
+.portfolio-header {
+    padding: 0 10%;
+    margin-bottom: 0px;
+}
+
+.portfolio-header {
+    display: flex;
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: flex-start; /* Aligns text to the left */
+    gap: 5px; /* Control the exact spacing between the two lines here */
+}
+
+.section-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    
+    /* Applying your 2-color gradient style from before */
+    background: linear-gradient(to right, #ff0000, #9e0101);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.portfolio-header h2 {
+    margin: 0; /* REMOVES the default browser gap */
+    font-size: 3rem;
+    color: #ffffff;
+    line-height: 1.1; /* Tightens the vertical space of the letters themselves */
+}
+
+.portfolio-header h2 {
+    margin-top: -10px; 
+}
+/* --- CAROUSEL VIEWPORT & SCROLLBAR --- */
+.carousel-viewport {
+    display: flex;
+    gap: 40px;
+    padding: 20px 10% 60px 10%;
+    overflow-x: auto; /* Enables free scrolling */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+/* Styled Scrollbar */
+.carousel-viewport::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel-viewport::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 0 10%;
+}
+
+.carousel-viewport::-webkit-scrollbar-thumb {
+    background: #ff0000;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(117, 0, 0, 0.5);
+}
+
+/* --- REEL CARD & EFFECTS --- */
+.reel-container {
+    flex: 0 0 320px; /* Fixed portrait width */
+    scroll-snap-align: center;
+}
+
+.reel-card {
+    position: relative;
+    width: 100%;
+    height: 570px;
+    background: #111;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+/* THE ZOOM & GLOW EFFECT */
+.reel-card:hover {
+    transform: scale(1.05) translateY(-10px); /* Zoom and Lift */
+    border-color: #ff0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4), 
+                0 0 60px rgba(255, 55, 98, 0.1); /* Glow Effect */
+}
+
+.reel-preview {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+/* Ensure Iframes/Embeds fill the card */
+.reel-preview iframe, 
+.reel-preview blockquote {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+}
+
+/* Optional Overlay on Hover */
+.reel-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 20px 20px;
+    background: linear-gradient(to top, rgba(255, 0, 0, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.reel-card:hover .reel-overlay {
+    opacity: 1;
+}
+
+.carousel-spacer {
+    flex: 0 0 100px;
+}
+.instagram-media {
+    min-width: 100% !important;
+    border-radius: 20px !important;
+}
+
+/* Graphic Design Works */
+
+/* Ensure the page has no edge gaps */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.graphics-full-section {
+    width: 100vw;
+    background: #050505;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-header {
+    padding-left: 5%;
+    margin-bottom: 30px;
+}
+
+/* THE VIEWPORT */
+.carousel-viewport {
+    width: 100%;
+    overflow-x: auto; /* Enables the manual scrollbar */
+    padding-bottom: 20px;
+    cursor: grab;
+    /* Smooth scroll for manual interaction */
+    scroll-behavior: smooth;
+}
+
+/* CUSTOM SCROLLBAR BELOW */
+.carousel-viewport::-webkit-scrollbar {
+    height: 10px;
+}
+.carousel-viewport::-webkit-scrollbar-track {
+    background: #111;
+}
+.carousel-viewport::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #ff0000, #8b0000);
+    border-radius: 5px;
+}
+
+/* THE ANIMATED TRACK */
+.carousel-track {
+    display: flex;
+    width: max-content; /* Critical for auto-scroll */
+    animation: infiniteScroll 40s linear infinite;
+}
+
+/* Pause on hover so viewer can control the scrollbar */
+.carousel-viewport:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+@keyframes infiniteScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* THE CARDS (Zoom & Glow) */
+.design-card {
+    flex: 0 0 450px; /* Adjust width as needed */
+    height: 300px;
+    margin-right: 0; /* Ensures cards touch or have minimal gaps */
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.design-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* HOVER EFFECTS */
+.design-card:hover {
+    transform: scale(1.02);
+    z-index: 2;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+.design-card:hover img {
+    transform: scale(1.1);
+}
+
+/* --- 3. CSS PREVIEW MODAL LOGIC (The :target Magic) --- */
+/* The hidden "overlay" window */
+.css-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Initially hidden */
+    opacity: 0;
+    pointer-events: none; /* Prevents clicking while hidden */
+    
+    transition: opacity 0.4s ease; /* Smooth fade-in */
+    z-index: 9999; /* Sits on top of everything else */
+}
+
+/* --- THE KEY: SHOW WHEN IT IS THE URL TARGET --- */
+.css-modal:target {
+    opacity: 1;
+    pointer-events: auto; /* Re-enables clicking */
+}
+
+/* The box containing the full image */
+.modal-content {
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
+    background: #111;
+    border: 2px solid #ff0000; /* Glowing border for the preview */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 50px rgba(145, 0, 0, 0.6); /* Large preview glow */
+    text-align: center;
+    
+    /* Animation when opening */
+    animation: modalPopIn 0.3s ease-out;
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 70vh; /* Limits image height on smaller screens */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.modal-content h3 {
+    color: white;
+    margin: 0;
+}
+
+/* --- 4. THE CLOSE BUTTON --- */
+.close-css {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 35px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.close-css:hover {
+    color: #ff0000;
+}
+
+/* MODAL OPEN ANIMATION */
+@keyframes modalPopIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* 1. THE MARQUEE SETUP */
+.marquee-window {
+    overflow: hidden;
+    width: 100%;
+    background: #000;
+    padding: 40px 0;
+}
+
+.marquee-track {
+    display: flex;
+    gap: 30px;
+    width: max-content; /* Fit all items in one row */
+    animation: scrollLinear 30s linear infinite;
+}
+
+/* Pause the scroll on hover so user can click */
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+/* 2. CARD ZOOM & GLOW */
+.design-card {
+    flex: 0 0 300px;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #333;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.design-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.design-card:hover {
+    border-color: #ffee00;
+    transform: scale(1.05); /* Card grows slightly */
+    box-shadow: 0 0 30px rgba(255, 115, 0, 0.6); /* Cyan Glow */
+    z-index: 10;
+}
+
+.design-card:hover img {
+    transform: scale(1.15); /* Image inside zooms in deeper */
+}
+
+/* THE INFINITE LOOP ANIMATION */
+@keyframes scrollLinear {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Moves halfway through the double list */
+}
+
+/* 3. LIGHTBOX PREVIEW LOGIC */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10000;
+    transition: opacity 0.5s ease;
+}
+
+/* Show when ID matches the URL target */
+.lightbox:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    transform: scale(0.7);
+    transition: transform 0.4s ease;
+    box-shadow: 0 0 60px rgba(0, 212, 255, 0.3);
+}
+
+.lightbox:target .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Takes up 100% of the screen height */
+    background-image: url('images/banner2.jpg'); /* Add your image path here */
+    background-size: cover;
+    background-position: center;
+    background-attachment: flex; /* Optional: creates a cool parallax effect */
+    display: flex;
+    align-items: top;
+    justify-content: center;
+}
+
+/* Dark overlay to make the white text "pop" */
+.banner-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(2, 0, 0, 0.6); /* Adjust transparency here */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-content {
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+    max-width: 800px;
+    
+}
+
+.banner-title {
+    font-size: clamp(2.5rem, 8vw, 4rem); /* Responsive text size */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    animation: fadeInUp 1s ease;
+}
+
+.banner-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* The Button with Glow Effect */
+.banner-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #ffffff;
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.banner-btn:hover {
+    background: #000000;
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Simple entry animation */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.main-header {
+    position: fixed; /* Keep it at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000; /* Stays on top of everything, including modals */
+    
+    /* GLASSMORPHISM EFFECT */
+    background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent */
+    backdrop-filter: blur(10px); /* Blurs content behind the header */
+    -webkit-backdrop-filter: blur(10px);
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO STYLING */
+.logo a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #ff0000; /* Your theme color */
+}
+
+/* NAVIGATION LINKS */
+.nav-links ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff0000;
+}
+
+/* Apply this to your first section after the header */
+.hero-banner {
+    margin-top: 80px; /* Match this to the height of your header */
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Ensures the header doesn't cover your section title when you click a link */
+}
+
+/* Container styling */
+.hero-typing-container {
+    display: flex;
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* The 'window' that shows only one role at a time */
+.roles-window {
+    height: 1.2em; /* Height of one line */
+    line-height: 1.2em;
+    overflow: hidden;
+    margin-left: 15px;
+}
+
+.roles-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #ff0000; /* Your theme color */
+    
+    /* Animation: slide 4 words + 1 duplicate (5 items total) */
+    /* 12s total duration / 4 words = 3s per word */
+    animation: slideRoles 14s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+.roles-list li {
+    height: 1.2em;
+}
+
+/* THE SLIDING ANIMATION */
+/* Each word takes up 25% of the timeline (100 / 4) */
+@keyframes slideRoles {
+    0%, 20% { transform: translateY(0); }
+    25%, 45% { transform: translateY(-1.2em); }
+    50%, 70% { transform: translateY(-2.4em); }
+    75%, 95% { transform: translateY(-3.6em); }
+    100% { transform: translateY(-4.8em); } /* Back to the start */
+}
+
+.roles-window::after {
+    content: "|";
+    color: #00d4ff;
+    animation: blinkCursor 0.5s infinite;
+    margin-left: 5px;
+}
+
+@keyframes blinkCursor {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+#About {
+    position: relative; /* Necessary to contain the background effects */
+    padding: 100px 10%;
+    background-color: #050505; /* The base dark color */
+    
+    /* 1. Add a subtle grid pattern */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    
+    overflow: hidden; /* Keeps the glow from leaking out */
+}
+
+/* 2. Add a creative "Glow" behind the content */
+#About::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    /* This creates a soft, colorful blur */
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, rgba(157, 0, 255, 0.05) 50%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1; /* Sits behind the text */
+    pointer-events: none; /* Allows you to click links through the glow */
+}
+
+/* 3. Ensure your content sits on top of the background effects */
+.about-content {
+    position: relative;
+    z-index: 2;
+}
+
+.about-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* TEXT STYLING */
+.about-content {
+    flex: 1;
+    z-index: 2;
+}
+
+.creative-title {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #ff0000, #ff0000);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+    max-width: 500px;
+}
+
+/* VISUAL COLLAGE STYLING */
+.about-visuals {
+    flex: 1;
+    position: relative;
+    height: 400px; /* Defines the space for the images */
+}
+
+.image-stack {
+    position: absolute;
+    background: #151515; /* Placeholder color */
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Individual Image Positioning */
+.stack-top {
+    width: 200px;
+    height: 250px;
+    top: 0;
+    right: 10%;
+    z-index: 3;
+    transform: rotate(-5deg);
+
+    /* ADDED IMAGE PROPERTIES */
+    background-image: url('images/ML4.jpg'); /* Path to your image */
+    background-size: cover;
+    background-position: center;
+}
+
+.stack-middle {
+    width: 220px;
+    height: 220px;
+    top: 20%;
+    left: 10%;
+    z-index: 2;
+    transform: rotate(8deg);
+    border-color: #9d00ff;
+
+    /* ADDED IMAGE PROPERTIES */
+    background-image: url('images/ML1.jpg'); /* Path to your image */
+    background-size: cover;
+    background-position: center;
+}
+
+.stack-bottom {
+    width: 280px;
+    height: 180px;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    transform: rotate(-2deg);
+
+    /* ADDED IMAGE PROPERTIES */
+    background-image: url('images/ML2.jpg'); /* Path to your image */
+    background-size: cover;
+    background-position: center;
+}
+
+/* HOVER INTERACTION */
+.image-stack:hover {
+    z-index: 10;
+    transform: scale(1.1) rotate(0deg);
+    border-color: #ff0000;
+    box-shadow: 0 0 25px rgba(87, 0, 0, 0.4);
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+    .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-visuals {
+        width: 100%;
+        height: 350px;
+        margin-top: 40px;
+    }
+    .stack-middle { left: 0; }
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Adjust '90px' to match the actual height of your fixed header */
+    scroll-padding-top: 90px; 
+}
+
+/* Optional: If you want the Reels section to have a distinct look */
+.ig-reels-section {
+    padding: 100px 0;
+    background-color: #050505;
+}
+
+/* Logo */
+.client-section-container {
+    width: calc(100% - 20px); /* Total width minus 10px margin on each side */
+    margin: 60px 10px;
+    background: #080808;
+    border-radius: 20px;
+    padding: 40px 0;
+}
+
+.client-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to move to next line */
+    justify-content: center; /* Centers the grid if items don't fill a row */
+    gap: 15px;
+    padding: 0 20px;
+}
+
+/* THE UNIFORM BOXES */
+.client-box {
+    position: relative;
+    flex: 0 0 200px; /* Forces every box to be exactly 200px wide */
+    height: 120px;   /* Forces every box to be exactly 120px tall */
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.client-logo {
+    max-width: 60%;
+    max-height: 50%;
+    object-fit: contain;
+    filter: grayscale(1) brightness(0.7); /* Muted look */
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+
+/* THE CREATIVE HOVER */
+.client-box:hover {
+    transform: translateY(-8px); /* Lifts the box up */
+    border-color: #ff0000;
+    background: #161616;
+}
+
+.client-box:hover .client-logo {
+    filter: grayscale(0) brightness(1); /* Logo regains color */
+    transform: scale(1.15); /* Logo zooms slightly */
+}
+
+/* NEON GLOW UNDERNEATH */
+.box-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(156, 0, 0, 0.356) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.client-box:hover .box-glow {
+    opacity: 1;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 500px) {
+    .client-box {
+        flex: 0 0 calc(50% - 15px); /* 2 per row on small phones */
+    }
+}
+
+/* footer */
+.main-footer {
+    background: #050505;
+    padding: 80px 0 20px;
+    border-top: 1px solid rgba(0, 212, 255, 0.2); /* Subtle glow separator */
+    color: #fff;
+    margin-top: 50px;
+}
+
+.footer-container {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 5%;
+}
+
+/* Typography Styling */
+.footer-brand p {
+    margin-top: 15px;
+    color: #888;
+    max-width: 250px;
+}
+
+.footer-contact h3, 
+.footer-social h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ff0000; /* Your highlight color */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-contact li {
+    margin-bottom: 10px;
+    color: #bbb;
+}
+
+.footer-contact a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-contact a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #740006;
+}
+
+/* Social Links Layout - Stacked in Column */
+.social-icons {
+    display: flex;
+    flex-direction: column; /* This stacks the links vertically */
+    gap: 12px;             /* Reduced gap slightly for a tighter column look */
+    align-items: flex-start; /* Keeps buttons aligned to the left */
+}
+
+.social-link {
+    display: inline-block;  /* Ensures the padding and border behave correctly */
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 10px 20px;     /* Increased padding for a better "button" feel in a list */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    transition: 0.3s;
+    width: fit-content;     /* Ensures the button only takes up as much space as the text */
+    min-width: 120px;       /* Optional: makes all buttons a consistent width */
+}
+
+.social-link:hover {
+    border-color: #500000;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    transform: translateX(5px); /* Subtle slide effect to the right on hover */
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.8rem;
+    color: #555;
+}
+
+
+/* Hide mobile menu elements by default */
+.menu-checkbox, .hamburger-icon {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    /* Show the Hamburger Icon */
+    .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .hamburger-icon span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background: #ff0000; /* Your theme color */
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    /* Position the Nav Links off-screen (Top) */
+    .nav-links {
+        position: fixed;
+        top: -100%; /* Hidden above the screen */
+        left: 0;
+        width: 100%;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(10px);
+        transition: 0.5s ease;
+        padding: 100px 0 50px;
+        text-align: center;
+        z-index: 90;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+    }
+
+    /* THE TOGGLE LOGIC */
+    /* When checkbox is checked, move nav to top: 0 */
+    .menu-checkbox:checked ~ .nav-links {
+        top: 0;
+    }
+
+    /* Animated Hamburger to "X" */
+    .menu-checkbox:checked ~ .hamburger-icon span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-checkbox:checked ~ .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-checkbox:checked ~ .hamburger-icon span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Hide the actual checkbox */
+    .menu-checkbox {
+        display: flex;
+    }
+}
